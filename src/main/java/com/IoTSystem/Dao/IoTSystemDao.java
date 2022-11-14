@@ -209,7 +209,7 @@ public boolean t_upsert(String product, String IoT_function, String t_value) {
 		
 		Connection conn= DriverManager.getConnection(url, user, password);
 	
-		String sql = "insert into t_test(production_field,IoT_function) values(?,?) on duplicate key update t_value=?";
+		String sql = "insert into t_test(production_field,IoT_function) values(?,?,?) on duplicate key update t_value=?";
 
 
 
@@ -217,6 +217,7 @@ public boolean t_upsert(String product, String IoT_function, String t_value) {
 		pstmt.setString(1,product);
 		pstmt.setString(2, IoT_function); 
 		pstmt.setDouble(3, t_value2);
+		pstmt.setDouble(4, t_value2);
 		
 		int rows = pstmt.executeUpdate();
 	
